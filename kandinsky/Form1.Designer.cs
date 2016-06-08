@@ -30,24 +30,24 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.fontbox = new System.Windows.Forms.ComboBox();
-            this.tools = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.palette = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.rectangle = new System.Windows.Forms.PictureBox();
             this.elipse = new System.Windows.Forms.PictureBox();
             this.line = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.fontbox = new System.Windows.Forms.ComboBox();
+            this.tools = new System.Windows.Forms.Panel();
             this.textbox = new System.Windows.Forms.PictureBox();
             this.rubber = new System.Windows.Forms.PictureBox();
             this.pencil = new System.Windows.Forms.PictureBox();
             this.paintbuck = new System.Windows.Forms.PictureBox();
             this.loupe = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.pipette = new System.Windows.Forms.PictureBox();
+            this.palette = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.color1 = new System.Windows.Forms.PictureBox();
             this.violet = new System.Windows.Forms.PictureBox();
             this.lightviolet = new System.Windows.Forms.PictureBox();
@@ -70,20 +70,25 @@
             this.lightgrey = new System.Windows.Forms.PictureBox();
             this.darkred = new System.Windows.Forms.PictureBox();
             this.red = new System.Windows.Forms.PictureBox();
+            this.circle = new System.Windows.Forms.Button();
+            this.fill = new System.Windows.Forms.Button();
+            this.square = new System.Windows.Forms.Button();
+            this.unfill = new System.Windows.Forms.Button();
+            this.triangle = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.tools.SuspendLayout();
-            this.palette.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rectangle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elipse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.line)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textbox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rubber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pencil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paintbuck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loupe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipette)).BeginInit();
+            this.palette.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.color1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.violet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightviolet)).BeginInit();
@@ -126,13 +131,48 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.triangle);
+            this.panel2.Controls.Add(this.unfill);
+            this.panel2.Controls.Add(this.square);
+            this.panel2.Controls.Add(this.fill);
+            this.panel2.Controls.Add(this.circle);
             this.panel2.Controls.Add(this.rectangle);
             this.panel2.Controls.Add(this.elipse);
             this.panel2.Controls.Add(this.line);
             this.panel2.Location = new System.Drawing.Point(486, 23);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 100);
+            this.panel2.Size = new System.Drawing.Size(237, 100);
             this.panel2.TabIndex = 38;
+            // 
+            // rectangle
+            // 
+            this.rectangle.Image = global::Kandinsky.Properties.Resources.rectsel;
+            this.rectangle.Location = new System.Drawing.Point(121, 12);
+            this.rectangle.Name = "rectangle";
+            this.rectangle.Size = new System.Drawing.Size(30, 30);
+            this.rectangle.TabIndex = 37;
+            this.rectangle.TabStop = false;
+            this.rectangle.Click += new System.EventHandler(this.rectangle_Click);
+            // 
+            // elipse
+            // 
+            this.elipse.Image = global::Kandinsky.Properties.Resources.drawellip;
+            this.elipse.Location = new System.Drawing.Point(68, 12);
+            this.elipse.Name = "elipse";
+            this.elipse.Size = new System.Drawing.Size(30, 30);
+            this.elipse.TabIndex = 36;
+            this.elipse.TabStop = false;
+            this.elipse.Click += new System.EventHandler(this.elipse_Click);
+            // 
+            // line
+            // 
+            this.line.Image = global::Kandinsky.Properties.Resources.line_tool;
+            this.line.Location = new System.Drawing.Point(15, 12);
+            this.line.Name = "line";
+            this.line.Size = new System.Drawing.Size(30, 30);
+            this.line.TabIndex = 35;
+            this.line.TabStop = false;
+            this.line.Click += new System.EventHandler(this.line_Click);
             // 
             // textBox1
             // 
@@ -140,6 +180,16 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(59, 20);
             this.textBox1.TabIndex = 37;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Kandinsky.Properties.Resources.line_thickness;
+            this.pictureBox1.Location = new System.Drawing.Point(237, 67);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(42, 41);
+            this.pictureBox1.TabIndex = 36;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label4
             // 
@@ -173,6 +223,53 @@
             this.tools.Size = new System.Drawing.Size(173, 108);
             this.tools.TabIndex = 32;
             // 
+            // textbox
+            // 
+            this.textbox.Image = global::Kandinsky.Properties.Resources.text;
+            this.textbox.Location = new System.Drawing.Point(119, 44);
+            this.textbox.Name = "textbox";
+            this.textbox.Size = new System.Drawing.Size(30, 30);
+            this.textbox.TabIndex = 6;
+            this.textbox.TabStop = false;
+            // 
+            // rubber
+            // 
+            this.rubber.Image = global::Kandinsky.Properties.Resources.eraser;
+            this.rubber.Location = new System.Drawing.Point(74, 9);
+            this.rubber.Name = "rubber";
+            this.rubber.Size = new System.Drawing.Size(30, 30);
+            this.rubber.TabIndex = 5;
+            this.rubber.TabStop = false;
+            this.rubber.Click += new System.EventHandler(this.rubber_Click);
+            // 
+            // pencil
+            // 
+            this.pencil.Image = global::Kandinsky.Properties.Resources.edit;
+            this.pencil.Location = new System.Drawing.Point(27, 10);
+            this.pencil.Name = "pencil";
+            this.pencil.Size = new System.Drawing.Size(30, 30);
+            this.pencil.TabIndex = 4;
+            this.pencil.TabStop = false;
+            this.pencil.Click += new System.EventHandler(this.pencil_Click);
+            // 
+            // paintbuck
+            // 
+            this.paintbuck.Image = global::Kandinsky.Properties.Resources.bucket2;
+            this.paintbuck.Location = new System.Drawing.Point(27, 45);
+            this.paintbuck.Name = "paintbuck";
+            this.paintbuck.Size = new System.Drawing.Size(30, 30);
+            this.paintbuck.TabIndex = 3;
+            this.paintbuck.TabStop = false;
+            // 
+            // loupe
+            // 
+            this.loupe.Image = global::Kandinsky.Properties.Resources.loupe;
+            this.loupe.Location = new System.Drawing.Point(74, 44);
+            this.loupe.Name = "loupe";
+            this.loupe.Size = new System.Drawing.Size(30, 30);
+            this.loupe.TabIndex = 2;
+            this.loupe.TabStop = false;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -181,6 +278,16 @@
             this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 1;
             this.label3.Text = "Tools";
+            // 
+            // pipette
+            // 
+            this.pipette.Image = global::Kandinsky.Properties.Resources.eyedropper;
+            this.pipette.Location = new System.Drawing.Point(119, 10);
+            this.pipette.Name = "pipette";
+            this.pipette.Size = new System.Drawing.Size(30, 30);
+            this.pipette.TabIndex = 0;
+            this.pipette.TabStop = false;
+            this.pipette.Click += new System.EventHandler(this.pipette_Click);
             // 
             // palette
             // 
@@ -231,103 +338,6 @@
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 31;
             this.label1.Text = "Color 1";
-            // 
-            // rectangle
-            // 
-            this.rectangle.Image = global::Kandinsky.Properties.Resources.rectsel;
-            this.rectangle.Location = new System.Drawing.Point(121, 12);
-            this.rectangle.Name = "rectangle";
-            this.rectangle.Size = new System.Drawing.Size(30, 30);
-            this.rectangle.TabIndex = 37;
-            this.rectangle.TabStop = false;
-            this.rectangle.Click += new System.EventHandler(this.rectangle_Click);
-            // 
-            // elipse
-            // 
-            this.elipse.Image = global::Kandinsky.Properties.Resources.drawellip;
-            this.elipse.Location = new System.Drawing.Point(68, 12);
-            this.elipse.Name = "elipse";
-            this.elipse.Size = new System.Drawing.Size(30, 30);
-            this.elipse.TabIndex = 36;
-            this.elipse.TabStop = false;
-            this.elipse.Click += new System.EventHandler(this.elipse_Click);
-            // 
-            // line
-            // 
-            this.line.Image = global::Kandinsky.Properties.Resources.line_tool;
-            this.line.Location = new System.Drawing.Point(15, 12);
-            this.line.Name = "line";
-            this.line.Size = new System.Drawing.Size(30, 30);
-            this.line.TabIndex = 35;
-            this.line.TabStop = false;
-            this.line.Click += new System.EventHandler(this.line_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Kandinsky.Properties.Resources.line_thickness;
-            this.pictureBox1.Location = new System.Drawing.Point(237, 67);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(42, 41);
-            this.pictureBox1.TabIndex = 36;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // textbox
-            // 
-            this.textbox.Image = global::Kandinsky.Properties.Resources.text;
-            this.textbox.Location = new System.Drawing.Point(119, 44);
-            this.textbox.Name = "textbox";
-            this.textbox.Size = new System.Drawing.Size(30, 30);
-            this.textbox.TabIndex = 6;
-            this.textbox.TabStop = false;
-            // 
-            // rubber
-            // 
-            this.rubber.Image = global::Kandinsky.Properties.Resources.eraser;
-            this.rubber.Location = new System.Drawing.Point(74, 9);
-            this.rubber.Name = "rubber";
-            this.rubber.Size = new System.Drawing.Size(30, 30);
-            this.rubber.TabIndex = 5;
-            this.rubber.TabStop = false;
-            this.rubber.Click += new System.EventHandler(this.rubber_Click);
-            // 
-            // pencil
-            // 
-            this.pencil.Image = global::Kandinsky.Properties.Resources.edit;
-            this.pencil.Location = new System.Drawing.Point(27, 10);
-            this.pencil.Name = "pencil";
-            this.pencil.Size = new System.Drawing.Size(30, 30);
-            this.pencil.TabIndex = 4;
-            this.pencil.TabStop = false;
-            this.pencil.Click += new System.EventHandler(this.pencil_Click);
-            // 
-            // paintbuck
-            // 
-            this.paintbuck.Image = global::Kandinsky.Properties.Resources.bucket2;
-            this.paintbuck.Location = new System.Drawing.Point(27, 45);
-            this.paintbuck.Name = "paintbuck";
-            this.paintbuck.Size = new System.Drawing.Size(30, 30);
-            this.paintbuck.TabIndex = 3;
-            this.paintbuck.TabStop = false;
-            // 
-            // loupe
-            // 
-            this.loupe.Image = global::Kandinsky.Properties.Resources.loupe;
-            this.loupe.Location = new System.Drawing.Point(74, 44);
-            this.loupe.Name = "loupe";
-            this.loupe.Size = new System.Drawing.Size(30, 30);
-            this.loupe.TabIndex = 2;
-            this.loupe.TabStop = false;
-            // 
-            // pipette
-            // 
-            this.pipette.Image = global::Kandinsky.Properties.Resources.eyedropper;
-            this.pipette.Location = new System.Drawing.Point(119, 10);
-            this.pipette.Name = "pipette";
-            this.pipette.Size = new System.Drawing.Size(30, 30);
-            this.pipette.TabIndex = 0;
-            this.pipette.TabStop = false;
-            this.pipette.Click += new System.EventHandler(this.pipette_Click);
             // 
             // color1
             // 
@@ -571,6 +581,54 @@
             this.red.TabStop = false;
             this.red.Click += new System.EventHandler(this.colorBox_Click);
             // 
+            // circle
+            // 
+            this.circle.Image = global::Kandinsky.Properties.Resources.drawellip;
+            this.circle.Location = new System.Drawing.Point(68, 54);
+            this.circle.Name = "circle";
+            this.circle.Size = new System.Drawing.Size(30, 30);
+            this.circle.TabIndex = 39;
+            this.circle.UseVisualStyleBackColor = true;
+            this.circle.Click += new System.EventHandler(this.circle_Click);
+            // 
+            // fill
+            // 
+            this.fill.Location = new System.Drawing.Point(186, 5);
+            this.fill.Name = "fill";
+            this.fill.Size = new System.Drawing.Size(35, 35);
+            this.fill.TabIndex = 40;
+            this.fill.UseVisualStyleBackColor = true;
+            this.fill.Click += new System.EventHandler(this.fill_Click);
+            // 
+            // square
+            // 
+            this.square.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.square.Image = global::Kandinsky.Properties.Resources.rectsel;
+            this.square.Location = new System.Drawing.Point(121, 54);
+            this.square.Name = "square";
+            this.square.Size = new System.Drawing.Size(30, 30);
+            this.square.TabIndex = 41;
+            this.square.UseVisualStyleBackColor = true;
+            this.square.Click += new System.EventHandler(this.square_Click);
+            // 
+            // unfill
+            // 
+            this.unfill.Location = new System.Drawing.Point(186, 54);
+            this.unfill.Name = "unfill";
+            this.unfill.Size = new System.Drawing.Size(35, 35);
+            this.unfill.TabIndex = 42;
+            this.unfill.UseVisualStyleBackColor = true;
+            this.unfill.Click += new System.EventHandler(this.unfill_Click);
+            // 
+            // triangle
+            // 
+            this.triangle.Location = new System.Drawing.Point(15, 54);
+            this.triangle.Name = "triangle";
+            this.triangle.Size = new System.Drawing.Size(30, 30);
+            this.triangle.TabIndex = 43;
+            this.triangle.UseVisualStyleBackColor = true;
+            this.triangle.Click += new System.EventHandler(this.triangle_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -588,20 +646,20 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.tools.ResumeLayout(false);
-            this.tools.PerformLayout();
-            this.palette.ResumeLayout(false);
-            this.palette.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rectangle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elipse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.line)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tools.ResumeLayout(false);
+            this.tools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textbox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rubber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pencil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paintbuck)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loupe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipette)).EndInit();
+            this.palette.ResumeLayout(false);
+            this.palette.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.color1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.violet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightviolet)).EndInit();
@@ -672,6 +730,11 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox elipse;
         private System.Windows.Forms.PictureBox rectangle;
+        private System.Windows.Forms.Button unfill;
+        private System.Windows.Forms.Button square;
+        private System.Windows.Forms.Button fill;
+        private System.Windows.Forms.Button circle;
+        private System.Windows.Forms.Button triangle;
     }
 }
 

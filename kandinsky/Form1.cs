@@ -26,14 +26,16 @@ namespace Kandinsky
         Point point1 = new Point(0, 0);
         Point point2 = new Point(0, 0);
 
-        Color paintcolor;
-        bool choose = false;
+        
         bool draw = false;
+        bool filled = false;
         int x, y, lx, ly = 0;
         Item currentItem;
+        Brush brush = new SolidBrush(Color.Black);
 
         public enum Item {
-            Rectangle, Elipse, Line, Text, Brush, Pencil, Eraser, ColorPicker,Circle
+            Line, Text, Brush, Pencil, Eraser, ColorPicker,
+            Circle,Square, Elipse, Rectangle, Triangle
         }
         public Form1()
         {
@@ -80,32 +82,78 @@ namespace Kandinsky
                     graphics.DrawLine(pen, point1, point2);
                 }
             }
-            else if (currentItem == Item.Elipse) {
-                point2 = e.Location;
-                Rectangle r = new Rectangle(point1.X, point1.Y,point2.X-point1.X,point2.Y-point1.Y);
-                graphics = this.CreateGraphics();
-                graphics.DrawEllipse(pen, r);
-            }//Maybe it will be useful to add a method call draw rectangle that returns a rectangle
-            else if (currentItem == Item.Rectangle)
+            else if (currentItem == Item.Elipse || currentItem == Item.Circle)
             {
                 point2 = e.Location;
                 Rectangle r;
-                if (point1.X <= point2.X && point1.Y <= point2.Y)
+                if (currentItem == Item.Circle) { r = get_Square(point1, point2); }
+                else
+                { r = get_Rectangle(point1, point2); }
+                graphics = this.CreateGraphics();
+                if (filled) { graphics.FillEllipse(brush, r); }
+                else { graphics.DrawEllipse(pen, r); }
+            }
+            else if (currentItem == Item.Rectangle || currentItem == Item.Square)
+            {
+                point2 = e.Location;
+                Rectangle r;
+                if (currentItem == Item.Square)
                 {
-                    r = new Rectangle(point1.X, point1.Y, Math.Abs(point2.X - point1.X), Math.Abs(point2.Y - point1.Y));
-                } else if (point1.X > point2.X && point1.Y <= point2.Y) {
-                    r = new Rectangle(point2.X, point1.Y, Math.Abs(point2.X - point1.X), Math.Abs(point2.Y - point1.Y));
-                }
-                else if (point1.X <= point2.X && point1.Y > point2.Y)
-                {
-                    r = new Rectangle(point1.X, point2.Y, Math.Abs(point2.X - point1.X), Math.Abs(point2.Y - point1.Y));
+                    r = get_Square(point1, point2);
                 }
                 else
                 {
-                    r = new Rectangle(point2.X, point2.Y, Math.Abs(point2.X - point1.X), Math.Abs(point2.Y - point1.Y));
+                    r = get_Rectangle(point1, point2);
                 }
                 graphics = this.CreateGraphics();
-                graphics.DrawRectangle(pen, r);    
+                if (filled)
+                {
+                    graphics.FillRectangle(brush, r);
+                }
+                else
+                {
+                    graphics.DrawRectangle(pen, r);
+                }
+            }
+            else if (currentItem == Item.Triangle) {
+                /* Make some research about how to draw a poligon
+                if (draw)
+                {
+                    point2 = e.Location;
+                    Point p1 = new Point();
+                    Point p2 = new Point();
+                    Point p3 = new Point();
+
+                    int minx, miny, maxx, maxy = 0;
+                    if (point1.X < point2.X)
+                    {
+                        minx = point1.X;
+                        maxx = point2.X;
+                    }
+                    else
+                    {
+                        minx = point2.X;
+                        maxx = point1.X;
+                    }
+                    if (point1.Y < point2.Y)
+                    {
+                        miny = point1.Y;
+                        maxy = point2.Y;
+                    }
+                    else
+                    {
+                        miny = point2.Y;
+                        maxy = point1.Y;
+                    }
+                    p1.X = minx + ((maxx - minx) / 2);
+                    p1.Y = miny;
+                    p2.X = minx;
+                    p2.Y = maxy;
+                    p3.X = maxx;
+                    p3.Y = maxy;
+                    graphics.DrawPolygon(pen, new Point[] { p1, p2, p3 });
+                }
+                */
             }
             draw = false;
         }
@@ -116,6 +164,7 @@ namespace Kandinsky
             {
                 if (draw)
                 {
+                    
                     point2 = e.Location;
                     graphics = this.CreateGraphics();
                     graphics.DrawLine(pen, point1, point2);
@@ -124,14 +173,56 @@ namespace Kandinsky
             }
         }
 
+        private Rectangle get_Square(Point p1, Point p2)
+        {
+            Rectangle r;
+            int x, y = 0;
+            int l = 0;
+            if (Math.Abs(p1.X - p2.X) == Math.Abs(p1.Y - p2.Y)) { return get_Rectangle(p1, p2); }
+            else if (Math.Abs(p1.X - p2.X) < Math.Abs(p1.Y - p2.Y))
+            {
+                l = Math.Abs(p1.X - p2.X);      
+            }
+            else {
+                l = Math.Abs(p1.Y - p2.Y);
+            }
+            if (p1.X < p2.X) { x = p1.X; } else { x = p2.X; }
+            if (p1.Y < p2.Y) { y = p1.Y; } else { y = p2.Y; }
+            r = new Rectangle(x, y, l, l);
+            return r;
+        }
+
+        private Rectangle get_Rectangle(Point point1, Point point2) {
+            Rectangle r;
+            if (point1.X <= point2.X && point1.Y <= point2.Y)
+            {
+                r = new Rectangle(point1.X, point1.Y, Math.Abs(point2.X - point1.X), Math.Abs(point2.Y - point1.Y));
+            }
+            else if (point1.X > point2.X && point1.Y <= point2.Y)
+            {
+                r = new Rectangle(point2.X, point1.Y, Math.Abs(point2.X - point1.X), Math.Abs(point2.Y - point1.Y));
+            }
+            else if (point1.X <= point2.X && point1.Y > point2.Y)
+            {
+                r = new Rectangle(point1.X, point2.Y, Math.Abs(point2.X - point1.X), Math.Abs(point2.Y - point1.Y));
+            }
+            else
+            {
+                r = new Rectangle(point2.X, point2.Y, Math.Abs(point2.X - point1.X), Math.Abs(point2.Y - point1.Y));
+            }
+            return r;
+        }
+
         private void color2_Click(object sender, EventArgs e)
         {
             pen = pen2;
+            brush = new SolidBrush(color2.BackColor);
         }
 
         private void color1_Click(object sender, EventArgs e)
         {
             pen = pen1;
+            brush = new SolidBrush(color1.BackColor);
         }
 
        
@@ -140,8 +231,10 @@ namespace Kandinsky
         {
             PictureBox pb = (PictureBox)sender;
             pen.Color = pb.BackColor;
+            brush = new SolidBrush(pb.BackColor);
             if (pen.Equals(pen2)) { color2.BackColor = pb.BackColor; }
             else { color1.BackColor = pb.BackColor; }
+           
         }
 
         private void rubber_Click(object sender, EventArgs e)
@@ -159,9 +252,7 @@ namespace Kandinsky
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             pen = new Pen(new SolidBrush(pen.Color),20);
-        }
-
-       
+        }    
 
         private void elipse_Click(object sender, EventArgs e)
         {
@@ -171,14 +262,38 @@ namespace Kandinsky
         private void rectangle_Click(object sender, EventArgs e)
         {
             currentItem = Item.Rectangle;
+        }
 
+        private void fill_Click(object sender, EventArgs e)
+        {
+            filled = true;
+        }
+
+        private void unfill_Click(object sender, EventArgs e)
+        {
+            filled = false;
+        }
+
+        private void circle_Click(object sender, EventArgs e)
+        {
+            currentItem = Item.Circle;
+        }
+
+        private void square_Click(object sender, EventArgs e)
+        {
+            currentItem = Item.Square;
+        }
+
+        private void triangle_Click(object sender, EventArgs e)
+        {
+            currentItem = Item.Triangle;
         }
 
         private void pencil_Click(object sender, EventArgs e)
         {
+            currentItem = Item.Pencil;
             if (pen.Equals(pen2)) { pen.Color = color2.BackColor; }
-            else { pen.Color = color1.BackColor; }
-            
+            else { pen.Color = color1.BackColor; }       
         }
 
         private void pipette_Click(object sender, EventArgs e)
